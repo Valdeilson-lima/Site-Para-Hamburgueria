@@ -359,7 +359,7 @@ checkoutBtn.addEventListener("click", () => {
 
     if (!isOpen) {
       Toastify({
-        text: "Estamos fechados! Abriremos amanhã às 18h. Agradecemos a compreensão.",
+        text: "Estamos fechados! Agradecemos a compreensão.",
         duration: 5000,
         close: true,
         gravity: "top",
@@ -422,8 +422,8 @@ function checkRestaurantStatus() {
   const currentHour = now.getHours();
   const currentMinutes = now.getMinutes();
   const isOpen =
-    (currentHour > 11 || (currentHour === 11 && currentMinutes >= 0)) &&
-    (currentHour < 23 || (currentHour === 23 && currentMinutes < 50));
+    (currentHour > 18 || (currentHour === 18 && currentMinutes >= 0)) &&
+    (currentHour < 23 || (currentHour === 23 && currentMinutes < 0));
   return isOpen;
 }
 
@@ -435,6 +435,6 @@ if (isOpen) {
   spanItem.classList.add("text-black", "font-bold", "bg-green-500", "px-3", "py-2", "rounded");
 } else {
   spanItem.textContent =
-    "Estamos fechados!Abriremos amanha às 18h. Agradecemos a compreensão.";
+    "Estamos fechados!Agradecemos a compreensão.";
   spanItem.classList.add("text-white", "font-bold", "bg-red-500", "px-3", "py-2", "rounded");
 }
