@@ -355,19 +355,26 @@ deliveryAddress.addEventListener("input", () => {
 });
 
 checkoutBtn.addEventListener("click", () => {
-    const isOpen = checkRestaurantStatus();
+  const isOpen = checkRestaurantStatus();
 
-    if (!isOpen) {
-      Toastify({
-        text: "Estamos fechados! Agradecemos a compreensão.",
-        duration: 5000,
-        close: true,
-        gravity: "top",
-        position: "right",
-        backgroundColor: "linear-gradient(to right, #ff0000, #ff4d4d)",
-      }).showToast();
-      return;
-    }
+  if (!isOpen) {
+    Toastify({
+      text: "Estamos fechados! Agradecemos a compreensão.",
+      duration: 5000,
+      close: true,
+      gravity: "top",
+      position: "right",
+      style: {
+        fontSize: "18px", // aumenta a fonte
+        color: "#fff", // cor do texto
+        background: "#f00", // cor de fundo
+        borderRadius: "8px", // bordas arredondadas
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // sombra para dar destaque
+        fontWeight: "bold", // texto em negrito
+      },
+    }).showToast();
+    return;
+  }
   if (cart.length === 0) {
     Toastify({
       text: "Seu carrinho está vazio! Adicione itens para finalizar o pedido.",
@@ -375,7 +382,14 @@ checkoutBtn.addEventListener("click", () => {
       close: true,
       gravity: "top",
       position: "right",
-      backgroundColor: "linear-gradient(to right, #ff0000, #ff4d4d)",
+      style: {
+        fontSize: "18px", // aumenta a fonte
+        color: "#fff", // cor do texto
+        background: "#f00", // cor de fundo
+        borderRadius: "8px", // bordas arredondadas
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // sombra para dar destaque
+        fontWeight: "bold", // texto em negrito
+      },
     }).showToast();
     return;
   }
@@ -400,22 +414,21 @@ checkoutBtn.addEventListener("click", () => {
       "mt-2",
     );
   }
-   const cartItems = cart.map(item => {
-    return `${item.quantity}x ${item.name} - ${formatarPreco(item.price * item.quantity)}`;
-   }).join("\n");
+  const cartItems = cart
+    .map((item) => {
+      return `${item.quantity}x ${item.name} - ${formatarPreco(item.price * item.quantity)}`;
+    })
+    .join("\n");
 
-   const message = `Olá, gostaria de fazer um pedido:\n\n${cartItems}\n\nTotal: ${formatarPreco(cart.reduce((total, item) => total + item.price * item.quantity, 0))}\n\nEndereço de entrega: ${deliveryAddress.value}`;
+  const message = `Olá, gostaria de fazer um pedido:\n\n${cartItems}\n\nTotal: ${formatarPreco(cart.reduce((total, item) => total + item.price * item.quantity, 0))}\n\nEndereço de entrega: ${deliveryAddress.value}`;
 
-   const encodedMessage = encodeURIComponent(message);
-   const whatsappUrl = `https://wa.me/5583991967945?text=${encodedMessage}`;
-   window.open(whatsappUrl, "_blank");
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/5583991967945?text=${encodedMessage}`;
+  window.open(whatsappUrl, "_blank");
   cart = [];
   deliveryAddress.value = "";
   updateCartModal();
 });
-
-
-
 
 function checkRestaurantStatus() {
   const now = new Date();
@@ -432,9 +445,22 @@ const isOpen = checkRestaurantStatus();
 
 if (isOpen) {
   spanItem.textContent = "Estamos abertos! Faça seu pedido.";
-  spanItem.classList.add("text-black", "font-bold", "bg-green-500", "px-3", "py-2", "rounded");
+  spanItem.classList.add(
+    "text-black",
+    "font-bold",
+    "bg-green-500",
+    "px-3",
+    "py-2",
+    "rounded",
+  );
 } else {
-  spanItem.textContent =
-    "Estamos fechados!Agradecemos a compreensão.";
-  spanItem.classList.add("text-white", "font-bold", "bg-red-500", "px-3", "py-2", "rounded");
+  spanItem.textContent = "Estamos fechados!Agradecemos a compreensão.";
+  spanItem.classList.add(
+    "text-white",
+    "font-bold",
+    "bg-red-500",
+    "px-3",
+    "py-2",
+    "rounded",
+  );
 }
