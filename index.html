@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+    <title>Dev Burg - Hamburgueria</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      class="w-full h-105 bg-zinc-900 bg-image flex items-center justify-center bg-cover bg-center"
+    >
+      <div class="flex flex-col items-center">
+        <img
+          src="assets/hamb-1.png"
+          alt="Hamburgueria Logo"
+          class="w-32 h-32 rounded-full shadow-lg hover:scale-110 transition duration-200"
+        />
+        <h1 class="text-4xl font-bold mt-4 mb-2 text-white">Dev Burg</h1>
+
+        <span class="text-white text-sm font-bold"
+          >Rua Ivonete Pessoa Rolim, 123 - Cajzeiras/PB</span
+        >
+        <p class="text-sm text-white font-bold">Nosso Horário de Funcionamento: Terça a Domingo das 18h às 23h</p>
+
+        <div
+          class="mt-3 text-sm font-bold  px-4 py-2 rounded"
+        >
+          <span class="text-sm font-bold " id="message"
+            >Seg à Dom - 18h as 23h</span
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Fim Header -->
+
+    <h2
+      class="text-center text-2xl mb-3 font-bold mt-4 text-gray-800 md:text-4xl"
+    >
+      Nosso Cardápio
+    </h2>
+
+    <div id="menu" class="px-2 mx-auto max-w-8xl">
+      <section id="area-hamburgueres" class="mb-10">
+        <h3 class="text-xl font-bold mt-8 mb-4 text-gray-800 md:text-3xl">
+          Hambúrgueres
+        </h3>
+        <div
+          id="hamburgueres-list"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </section>
+      <section id="area-bebidas" class="mb-10">
+        <h3 class="text-xl font-bold mt-8 mb-4 text-gray-800 md:text-3xl">
+          Bebidas
+        </h3>
+        <div
+          id="bebidas-list"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </section>
+    </div>
+
+    <div
+      class=" bg-black/50 w-full h-full fixed top-0 left-0 z-99 items-center justify-center hidden"
+      id="cart-modal"
+    >
+      <div class="bg-white p-5 rounded-md w-full max-w-md mx-auto">
+        <h2 class="text-2xl font-bold text-gray-800">Meu Carrinho</h2>
+        <p class="text-sm text-gray-600">Vej seu carrinho de pedidos</p>
+        <div id="cart-items" class="mb-4 flex justify-between flex-col gap-4">
+          <!-- Itens do carrinho serão adicionados aqui -->
+        </div>
+        <p id="cart-total" class="text-lg font-bold text-gray-800">
+          Total: R$ 0,00
+        </p>
+        <p class="mt-4 font-bold text-sm">Endereço de entrega:</p>
+        <textarea
+          type="text"
+          id="delivery-address"
+          class="w-full border border-gray-300 rounded px-3 py-2 my-1 flex flex-wrap text-sm resize-none"
+          placeholder="Digite seu endereço... "
+          rows="3"
+        ></textarea>
+        <p class="text-red-500 hidden" id="address-warn">
+          Digite seu endereço completo para finalizar o pedido
+        </p>
+        <div class="mt-4 flex flex-col gap-2 md:flex-row">
+          <button
+            id="checkout-btn"
+            class="w-full bg-green-500 text-white font-bold py-2 rounded hover:bg-green-600 transition duration-200 cursor-pointer text-sm"
+          >
+            Finalizar Pedido
+          </button>
+          <button
+            id="close-cart-btn"
+            class="w-full bg-red-500 text-white font-bold py-2 rounded hover:bg-red-600 transition duration-200 cursor-pointer text-sm"
+          >
+            Fechar Carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer
+      class="w-full h-10 bg-red-500 flex py-3 items-center justify-center fixed bottom-0 z-40"
+    >
+      <button id="cart-btn" class="cursor-pointer text-sm font-bold text-white">
+        (<span id="cart-count">0</span>) Ver Carrinho
+      </button>
+    </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
